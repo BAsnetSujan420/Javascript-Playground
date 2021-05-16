@@ -61,9 +61,12 @@
           `audio[data-key = "${e.keyCode}"]`
         );
 
+        const key = document.querySelector(`.key[data-key = "${e.keyCode}"]`);
+
         if (!audio) return; // stop function when other than mentioned key is pressed
         audio.currentTime = 0; // rewind to start
         audio.play();
+        key.classList.add("playing");
       });
     </script>
   </body>
