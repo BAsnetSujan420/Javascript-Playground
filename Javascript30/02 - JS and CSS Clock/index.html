@@ -74,6 +74,16 @@
         const minutes = now.getMinutes();
         const hour = now.getHours();
 
+        if (seconds == 0) {
+          secondHand.style.transitionDuration = "0s";
+          minuteHand.style.transitionDuration = "0s";
+          hourHand.style.transitionDuration = "0s";
+        } else {
+          secondHand.style.transitionDuration = ".05s";
+          minuteHand.style.transitionDuration = ".05s";
+          hourHand.style.transitionDuration = ".05s";
+        }
+
         const secondDegree = (seconds / 60) * 360 + 90;
         secondHand.style.transform = `rotate(${secondDegree}deg)`;
 
