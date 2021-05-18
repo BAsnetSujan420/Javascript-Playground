@@ -17,6 +17,8 @@
         max="200"
         value="10"
         data-sizing="px"
+        data-name="JavaScript"
+        data-cool="💩"
       />
 
       <label for="blur">Blur:</label>
@@ -79,7 +81,8 @@
       const inputs = document.querySelectorAll(".controls input");
 
       function handleUpdate() {
-        console.log(this.value);
+        const suffix = this.dataset;
+        console.log(suffix);
       }
 
       inputs.forEach((input) => input.addEventListener("change", handleUpdate));
