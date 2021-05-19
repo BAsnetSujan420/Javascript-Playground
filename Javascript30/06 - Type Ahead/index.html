@@ -19,8 +19,9 @@
 
       const cities = [];
 
-      const prom = fetch(endpoint);
-      console.log(prom);
+      fetch(endpoint)
+        .then((blob) => blob.json())
+        .then((data) => cities.push(...data));
     </script>
   </body>
 </html>
