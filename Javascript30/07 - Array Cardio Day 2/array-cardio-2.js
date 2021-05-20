@@ -45,4 +45,10 @@
   
       // delete the comment with the ID of 823423
 
-      
+      comments.splice(index, 1);
+
+      console.log(comments);
+
+      // print only first two comments
+
+      console.log(comments.slice(0,2));
