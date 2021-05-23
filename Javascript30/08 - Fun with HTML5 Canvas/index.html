@@ -24,6 +24,10 @@
       ctx.lineCap = "round";
       ctx.lineWidth = 10;
 
+      // soft-light, color-dodge, source-out, xor, multiply
+      // ctx.globalCompositeOperation = "xor";
+      ctx.globalCompositeOperation = "luminosity";
+
       let isDrawing = false;
       let lastX = 0;
       let lastY = 0;
