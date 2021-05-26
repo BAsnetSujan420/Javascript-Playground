@@ -241,7 +241,20 @@
       const sliderImages = document.querySelectorAll(".slide-in");
 
       function checkSlide(e) {
-        console.count(e);
+        sliderImages.forEach((slideImage) => {
+          //halfway through the image
+          const slideInAt =
+            window.scrollY + window.innerHeight - slideImage.height / 2;
+          // bottom of the image
+          const imageBottom = slideImage.offsetTop + slideImage.height;
+          const isHalfShown = slideInAt > slideImage.offsetTop;
+          const isNotScrolledPast = window.scrollY < imageBottom;
+          if (isHalfShown && isNotScrolledPast) {
+            slideImage.classList.add("active");
+          } else {
+            slideImage.classList.remove("active");
+          }
+        });
       }
 
       window.addEventListener("scroll", debounce(checkSlide));
