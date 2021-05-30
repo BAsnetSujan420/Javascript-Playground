@@ -60,7 +60,7 @@
       <li data-time="2:14">Video 52</li>
       <li data-time="3:44">Video 53</li>
       <li data-time="5:05">Video 54</li>
-      <li data-time="6:03">Video 55</li>
+      <li data-time="6:015">Video 55</li>
       <li data-time="12:39">Video 56</li>
       <li data-time="1:56">Video 57</li>
       <li data-time="4:04">Video 58</li>
@@ -76,7 +76,14 @@
         })
         .reduce((total, vidSeconds) => total + vidSeconds);
 
-      console.log(seconds);
+      let secondsLeft = seconds;
+      const hours = Math.floor(secondsLeft / 3600);
+      secondsLeft = secondsLeft % 3600;
+
+      const mins = Math.floor(secondsLeft / 60);
+      secondsLeft = secondsLeft % 60;
+
+      console.log(hours, mins, secondsLeft);
     </script>
   </body>
 </html>
