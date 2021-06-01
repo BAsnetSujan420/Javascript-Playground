@@ -9,15 +9,24 @@
   </head>
   <body>
     <div class="container">
-      <button>Generate</button>
+      <button onclick="generate()">Generate</button>
     </div>
-
+    <script src="js/anime.min.js"></script>
     <script>
       const container = document.querySelector(".container");
       for (let i = 0; i <= 10; i++) {
         const blocks = document.createElement("div");
         blocks.classList.add("block");
         container.appendChild(blocks);
+      }
+
+      function generate() {
+        anime({
+          targets: ".block",
+          translateX: function () {
+            return anime.random(-700, 700);
+          },
+        });
       }
     </script>
   </body>
