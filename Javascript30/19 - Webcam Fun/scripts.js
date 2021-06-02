@@ -34,9 +34,14 @@ function takePhoto(){
 
     //take the data out of canvas
     const data = canvas.toDataURL('image/jpeg');
-    console.log(data); 
+    const link = document.createElement('a');
+    link.href = data;
+    link.setAttribute('download', 'handsome');
+    link.textContent = 'Download Image';
+    strip.insertBefore(link, strip.firstChild);
 }
 
 getVideo()
 
 video.addEventListener('canplay', paintToCanvas);
+ 
