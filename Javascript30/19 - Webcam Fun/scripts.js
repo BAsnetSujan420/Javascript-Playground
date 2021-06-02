@@ -26,4 +26,17 @@ function paintToCanvas(){
 ctx.drawImage(video, 0 , 0, width, height);
     }, 16);
 }
+
+function takePhoto(){
+    //played the sound
+    snap.currentTime = 0;
+    snap.play();
+
+    //take the data out of canvas
+    const data = canvas.toDataURL('image/jpeg');
+    console.log(data); 
+}
+
 getVideo()
+
+video.addEventListener('canplay', paintToCanvas);
