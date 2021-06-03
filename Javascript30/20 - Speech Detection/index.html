@@ -21,6 +21,15 @@
       recognition.addEventListener("result", (e) => {
         console.log(e.results);
         const transcript = e.results[0][0]["transcript"];
+
+        p.textContent = transcript;
+        if (e.results[0].isFinal) {
+          p = document.createElement("p");
+          words.appendChild(p);
+        }
+        if(transcript.includes('get the weather')){
+          console.log("Getting the weather!!"));
+        }
         console.log(transcript);
       });
 
