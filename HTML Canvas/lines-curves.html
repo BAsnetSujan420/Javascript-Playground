@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lines and Curves on the HTML Canvas</title>
+    <style>
+      #canvas {
+        border: 1px solid #999;
+        margin: 1rem auto;
+        display: block;
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lines and Curves on the HTML Canvas</h1>
+    <canvas id="canvas"></canvas>
+
+    <script>
+      let canvas, ctx;
+      let midx, midy, midx1, midy1, midx2, midy2;
+      document.addEventListener("DOMContentLoaded", (e) => {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        canvas.width = 600;
+        canvas.height = 400;
+
+        canvas.addEventListener("mousedown", start);
+        canvas.addEventListener("mouseup", end);
+
+        ctx.lineCap = "square";
+        ctx.lineWidth = 10;
+      });
+
+      const start = function (e) {
+        ctx.beginPath();
+        ctx.strokeStyle = "#bada55";
+        console.log("from", e.offsetX, e.offsetY);
+        ctx.moveTo(e.offsetX, e.offsetY);
+      };
+
+      const end = function (e) {
+        console.log("to", e.offsetX, e.offsetY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+      };
+    </script>
+  </body>
+</html>
