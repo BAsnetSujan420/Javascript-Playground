@@ -29,7 +29,8 @@
 
         canvas.addEventListener("mousedown", start);
         // canvas.addEventListener("mouseup", end);
-        canvas.addEventListener("mouseup", endQC);
+        // canvas.addEventListener("mouseup", endQC);
+        canvas.addEventListener("mouseup", endBC);
         ctx.lineCap = "square";
 
         midx = canvas.width / 2;
@@ -75,6 +76,14 @@
         let endx = e.offsetX;
         let endy = e.offsetY;
         ctx.quadraticCurveTo(midx, midy, endx, endy);
+        ctx.stroke();
+      };
+
+      const endBC = function (e) {
+        console.log("to", e.offsetX, e.offsetY);
+        let endx = e.offsetX;
+        let endy = e.offsetY;
+        ctx.bezierCurveTo(midx1, midy1, midx2, midy2, endx, endy);
         ctx.stroke();
       };
     </script>
