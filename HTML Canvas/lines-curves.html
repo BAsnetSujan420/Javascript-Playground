@@ -28,10 +28,34 @@
         canvas.height = 400;
 
         canvas.addEventListener("mousedown", start);
-        canvas.addEventListener("mouseup", end);
-
+        // canvas.addEventListener("mouseup", end);
+        canvas.addEventListener("mouseup", endQC);
         ctx.lineCap = "square";
-        ctx.lineWidth = 10;
+
+        midx = canvas.width / 2;
+        midy = canvas.height / 2;
+
+        midx1 = canvas.width / 4;
+        midy1 = canvas.height / 4;
+
+        midx2 = canvas.width - midx1;
+        midy2 = canvas.height - midy1;
+
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.arc(midx, midy, 5, 0, Math.PI * 2, false);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(midx1, midy1, 5, 0, Math.PI * 2, false);
+        ctx.strokeStyle = "orange";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(midx2, midy2, 5, 0, Math.PI * 2, false);
+        ctx.strokeStyle = "skyblue";
+        ctx.stroke();
       });
 
       const start = function (e) {
@@ -44,6 +68,13 @@
       const end = function (e) {
         console.log("to", e.offsetX, e.offsetY);
         ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+      };
+
+      const endQC = function (e) {
+        let endx = e.offsetX;
+        let endy = e.offsetY;
+        ctx.quadraticCurveTo(midx, midy, endx, endy);
         ctx.stroke();
       };
     </script>
