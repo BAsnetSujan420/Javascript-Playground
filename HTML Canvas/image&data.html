@@ -42,7 +42,24 @@
         };
 
         imgObj.src = "http://unsplash.it/1000/800";
+        imgObj.crossOrigin = "anonymous";
+
+        canvas.addEventListener("click", greyscale);
       });
+
+      const greyscale = function (ev) {
+        imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        let arr = imgData.data;
+        for (let i = 0; i < arr.length; i = i + 4) {
+          let ttl = arr[i] + arr[i + 1] + arr[i + 2];
+          let avg = parseInt(ttl / 3);
+          arr[i] = avg; //red
+          arr[i + 1] = avg; //green
+          arr[i + 2] = avg; //blue
+        }
+        imgData.data = arr;
+        ctx.putImageData(imgData, 0, 0);
+      };
     </script>
   </body>
 </html>
