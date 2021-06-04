@@ -38,21 +38,26 @@
         let x = 100;
         let y = 100;
 
+        ctx.save(); // creates a save point
         ctx.beginPath();
         ctx.translate(200, 200);
         ctx.fillText("translate", 10, 30);
         ctx.fill();
         ctx.closePath();
+        ctx.restore(); // go back tot he last save point
 
+        ctx.save();
         ctx.beginPath();
         ctx.arc(0, 0, 10, 0, Math.PI * 2);
         ctx.rotate(Math.PI / 4); //3.14 radians 180 deg
         ctx.fillText("rotate", 300, 0);
         ctx.fill();
         ctx.closePath();
+        ctx.restore();
 
         ctx.beginPath();
-        ctx.scale(2, 2);
+        ctx.translate(100, 500);
+        ctx.scale(1, -1);
         ctx.fillText("scale", x, y);
         ctx.fill();
         ctx.closePath();
