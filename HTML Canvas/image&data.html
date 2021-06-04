@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        border: 1px solid #999;
+        margin: 1rem auto;
+        display: block;
+        background-color: antiquewhite;
+      }
+
+      img {
+        width: 80%;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+      let canvas, ctx;
+
+      document.addEventListener("DOMContentLoaded", (e) => {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        canvas.width = 600;
+        canvas.height = 400;
+
+        let imgObj = new Image();
+        imgObj.onload = function () {
+          let w = canvas.width;
+          let nw = imgObj.naturalWidth;
+          let nh = imgObj.naturalHeight;
+          let aspect = nw / nh;
+          let h = canvas.width / aspect;
+          canvas.height = h;
+          ctx.drawImage(imgObj, 0, 0, w, h);
+        };
+
+        imgObj.src = "http://unsplash.it/1000/800";
+      });
+    </script>
+  </body>
+</html>
