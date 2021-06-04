@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Canvas Basics and Shapes</title>
+    <style>
+      #canvas {
+        border: 1px solid #999;
+        margin: 1rem auto;
+        display: block;
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+      let canvas, ctx;
+      document.addEventListener("DOMContentLoaded", (e) => {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        canvas.width = 600;
+        canvas.height = 400;
+
+        drawRect();
+        drawEllipse();
+      });
+
+      const drawRect = function () {
+        ctx.rect(300, 100, 100, 50); // x, y , width, height
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 8;
+
+        ctx.fillStyle = "skyblue";
+
+        // ctx.fill();
+        // ctx.stroke();
+
+        // draw a rect or fill stroke x, y, width, height
+        ctx.fillRect(200, 300, 100, 50);
+        ctx.strokeRect(100, 100, 100, 50);
+      };
+    </script>
+  </body>
+</html>
