@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Direction Aware Hover effect</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <span></span>
+        <div class="imgBox">
+          <img src="img/IMG_20210418_073004.jpg" alt="" />
+        </div>
+        <div class="content">
+          <div>
+            <h2>Nagi Gumba</h2>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
+              accusantium, expedita id blanditiis at tempore nesciunt deleniti
+              fugit nam nisi itaque? Praesentium animi natus, perspiciatis odit
+              illo repellendus nemo doloribus?
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span></span>
+        <div class="imgBox">
+          <img src="img/IMG_20210418_131124.jpg" alt="" />
+        </div>
+        <div class="content">
+          <div>
+            <h2>Badeli</h2>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
+              accusantium, expedita id blanditiis at tempore nesciunt deleniti
+              fugit nam nisi itaque? Praesentium animi natus, perspiciatis odit
+              illo repellendus nemo doloribus?
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span></span>
+        <div class="imgBox">
+          <img src="img/IMG_20210418_132023.jpg" alt="" />
+        </div>
+        <div class="content">
+          <div>
+            <h2>Tarebhir</h2>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
+              accusantium, expedita id blanditiis at tempore nesciunt deleniti
+              fugit nam nisi itaque? Praesentium animi natus, perspiciatis odit
+              illo repellendus nemo doloribus?
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".card").on("mouseenter", function (e) {
+          x = e.pageX - $(this).offset().left;
+          y = e.pageY - $(this).offset().top;
+          $(this).find("span").css({ top: y, left: x });
+        });
+        $(".card").on("mouseout", function (e) {
+          x = e.pageX - $(this).offset().left;
+          y = e.pageY - $(this).offset().top;
+          $(this).find("span").css({ top: y, left: x });
+        });
+      });
+    </script>
+  </body>
+</html>
