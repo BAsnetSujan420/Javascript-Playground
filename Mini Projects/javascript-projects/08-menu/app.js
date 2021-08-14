@@ -1,6 +1,8 @@
 import { menu } from "./menu.js";
 
 const sectionCenter = document.querySelector(".section-center");
+const btnContainer = document.querySelector(".btn-container");
+const filterBtns = document.querySelectorAll(".filter-btn");
 
 // display all menu when page loads
 window.addEventListener("DOMContentLoaded", () => {
@@ -28,3 +30,20 @@ function displayMenuItems(menuItems) {
   // console.log(displayMenu);
   sectionCenter.innerHTML = displayMenu;
 }
+
+// filter menu when clicked on filter button
+filterBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const category = e.currentTarget.dataset.category;
+    const menuCategory = menu.filter((menuItem) => {
+      if (menuItem.category === category) {
+        return menuItem;
+      }
+    });
+    if (category === "all") {
+      displayMenuItems(menu);
+    } else {
+      displayMenuItems(menuCategory);
+    }
+  });
+});
