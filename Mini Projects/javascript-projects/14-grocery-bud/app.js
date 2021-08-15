@@ -19,6 +19,9 @@ let editID = "";
 //submit form
 form.addEventListener("submit", addItem);
 
+//clear items
+clearBtn.addEventListener("click", clearItems);
+
 // ****** FUNCTIONS **********
 
 //add item
@@ -47,6 +50,12 @@ function addItem(e) {
         <i class="fas fa-trash"></i>
       </button>
     </div>`;
+
+    // delete and edit buttons can be accessed only after adding items
+    const deleteBtn = element.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", deleteItem);
+    const editBtn = element.querySelector(".edit-btn");
+    editBtn.addEventListener("click", editItem);
 
     //append child
     list.appendChild(element);
@@ -81,6 +90,45 @@ function clearInputField() {
   editFlag = false;
   editID = "";
   submitBtn.textContent = "submit";
+}
+
+// clear items
+function clearItems() {
+  const items = document.querySelectorAll(".grocery-item");
+  if (items.length > 0) {
+    items.forEach((item) => {
+      list.removeChild(item);
+    });
+  }
+  container.classList.remove("show-container");
+  displayAlert("empty list", "danger");
+  clearInputField();
+}
+
+//delete item
+function deleteItem(e) {
+  const element = e.currentTarget.parentElement.parentElement;
+  const id = element.dataset.id;
+
+  list.removeChild(element);
+
+  if (list.children.length === 0) {
+    container.classList.remove("show-container");
+  }
+  displayAlert("item removed", "danger");
+  clearInputField();
+}
+
+//edit item
+function editItem(e) {
+  const element = e.currentTarget.parentElement.parentElement;
+  // set edit item
+  editElement = e.currentTarget.parentElement.previousElementSibling;
+  // set form value
+  grocery.value = editElement.innerHTML;
+  editFlag = true;
+  editID = element.dataset.id;
+  submitBtn.textContent = "edit";
 }
 
 // ****** LOCAL STORAGE **********
